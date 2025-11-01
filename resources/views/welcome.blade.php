@@ -21,7 +21,7 @@
 
     <!-- Lado derecho -->
     <div class="flex-none flex items-center gap-4">
-      <a href="#" class="btn btn-ghost">Login</a>
+      <a href="{{ route('Auth.dashboard') }}" class="btn btn-ghost">Login</a>
     </div>
   </div>
 </header>
