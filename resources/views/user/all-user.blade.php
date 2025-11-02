@@ -3,9 +3,9 @@
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div class="flex items-center gap-3">
                 <div class="bg-base-200 p-3 rounded-full">
-                    <i class="fa-solid fa-users text-xl text-primary"></i>
+                    <i class="fa-solid fa-users text-xl text-secondary-content"></i>
                 </div>
-                <h1 class="text-2xl sm:text-3xl font-bold text-base-content">Gestión de usuarios</h1>
+                <h1 class="text-2xl sm:text-3xl font-bold text-secondary-content">Gestión de usuarios</h1>
             </div>
             <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
                 {{-- boton para creaer --}}

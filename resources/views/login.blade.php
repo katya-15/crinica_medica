@@ -38,9 +38,7 @@
                                     <span class="label-text font-medium text-white">Usuario</span>
                                 </label>
                                 <div class="relative text-black">
-                                    <i
-                                        class="fa-solid fa-user-cowboy absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black"></i>
-
+                                    <i class="fa-solid fa-user-doctor-hair absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black"></i>
                                     <input type="text" id="username" name="username" placeholder="Oxri"
                                         class="input input-bordered w-full pl-10 bg-gray-50/50 border-gray-200 focus:bg-white focus:border-indigo-500 transition-all duration-200"
                                         required />

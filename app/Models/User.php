@@ -53,7 +53,7 @@ class User extends Authenticatable
     }
 
     //uno a muchos un usuario medico puede tener muchas expecialidad 
-    public function cows()
+    public function medico()
     {
         return $this->hasMany(Medico::class, 'cod_user');
     }
