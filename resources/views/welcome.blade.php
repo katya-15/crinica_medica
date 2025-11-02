@@ -32,8 +32,8 @@
         <div class="container mx-auto px-6 max-w-5xl py-8">
             <div class="hero">
                 <div class="hero-content flex-col lg:flex-row-reverse gap-8">
-                    <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-                        class="max-w-sm rounded-lg shadow-2xl" />
+                    <img src="{{ asset('img/vision.jpeg') }}"
+                        class="rounded-2xl shadow-xl object-cover w-full h-72 sm:h-80 lg:h-96" />
                     <div>
                         <h1 class="text-5xl text-neutral font-bold">Misión</h1>
                         <p class="py-4 text-neutral">
@@ -49,8 +49,8 @@
         <div class="container mx-auto px-6 max-w-5xl py-4">
             <div class="hero">
                 <div class="hero-content flex-col lg:flex-row gap-8">
-                    <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-                        class="max-w-sm rounded-lg shadow-2xl" />
+                    <img src="{{ asset('img/consultorio.jpeg') }}"
+                        class="rounded-2xl shadow-xl object-cover w-full h-72 sm:h-80 lg:h-96" />
                     <div>
                         <h1 class="text-5xl text-neutral font-bold">Visión</h1>
                         <p class="py-4 text-neutral">
@@ -98,54 +98,72 @@
 
 
         <div class="container mx-auto py-8">
-            <h1 class="text-3xl text-neutral font-bold">Contamos con estos servicios</h1>
+            <h1 class="text-3xl text-neutral font-bold">Contamos con novedades</h1>
             <div class="flex justify-center py-8">
 
                 <div class="flex flex-row flex-wrap justify-center gap-6">
                     <div class="card bg-base-100 w-80 shadow-md hover:shadow-xl transition-shadow">
-                        <figure>
-                            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                                alt="Shoes" />
+                        <figure class="h-56 overflow-hidden">
+                            <img src="{{ asset('img/tecnologia.jpg') }}" alt="Shoes"
+                                class="w-full h-full object-cover" />
                         </figure>
                         <div class="card-body">
-                            <h2 class="card-title text-neutral">Pedriatia</h2>
-                            <p class="text-neutral">Tendemos medicos experimentado con carisma y buena atencion a las
-                                familias al momento más
-                                hermoso que es traer una vida a este mundo </p>
+                            <h2 class="card-title text-neutral">Equipos médicos de última generación</h2>
+                            <p class="text-neutral">Contamos con la mejor y más nueva tecnología médica para cuidarte.
+                                Esto significa diagnósticos más precisos y tratamientos más rápidos y efectivos. </p>
                         </div>
                     </div>
 
                     <!-- Card 2 -->
                     <div class="card bg-base-100 w-80 shadow-md hover:shadow-xl transition-shadow">
-                        <figure>
-                            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                                alt="Shoes" />
+                        <figure class="h-56 overflow-hidden">
+                            <img src="{{ asset('img/fisioterapia.jpeg') }}" alt="Shoes"
+                                class="w-full h-full object-cover" />
                         </figure>
                         <div class="card-body">
-                            <h2 class="card-title text-neutral">Ortopédia</h2>
-                            <p class="text-neutral">Medicos con experiencia en atención a deportitas de tallas
-                                internacional y nacional. Con
-                                esa fina y presisa operación para no volver a sentir dolores musculare
+                            <h2 class="card-title text-neutral">Fisioterapia</h2>
+                            <p class="text-neutral">Nuestros tratamientos de fisioterapia le ayudan a dejar atrás el
+                                dolor, recuperar la fuerza y la movilidad después de una lesión o cirugía.
                             </p>
-
                         </div>
                     </div>
 
                     <!-- Card 3 -->
                     <div class="card bg-base-100 w-80 shadow-md hover:shadow-xl transition-shadow">
-                        <figure>
-                            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                                alt="Shoes" />
+                        <figure class="h-56 overflow-hidden">
+                            <img src="{{ asset('img/tomografo.jpg') }}" alt="Shoes"
+                                class="w-full h-full object-cover" />
                         </figure>
                         <div class="card-body">
-                            <h2 class="card-title text-neutral">General </h2>
-                            <p class="text-neutral">Con la puntualidad y calides que se debe a cada uno de mnuestros
-                                pacientes. con esas soluciones puntuales para que salga de un bache de muestro dia a dia
+                            <h2 class="card-title text-neutral">Tomógrafo Computarizado </h2>
+                            <p class="text-neutral">Hemos adquirido un Tomógrafo Computarizado de última generación, una
+                                pieza clave en nuestra misión de brindar un diagnóstico excepcional.
                             </p>
-
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
 
+
+        <div class="container mx-auto px-6 max-w-5xl py-6">
+            <div class="hero  ">
+                <div class="hero-content text-center">
+                    <div class="max-w-md">
+                        <h1 class="text-5xl text-neutral font-bold mb-4">Catalogo de servicios</h1>
+
+
+                        <div class="text-neutral text-left list-disc list-inside space-y-2">
+
+                            @foreach ($servicio as $item)
+                                <div class="bg-white shadow-lg rounded-lg p-4">
+                                    <h2 class="text-xl font-semibold mb-2">{{ $item->name }}</h2>
+                                    <p class="text-gray-600 mb-3">{{ $item->description }}</p>
+                                    <span class="block text-indigo-600 font-bold">Q. {{ $item->price }}</span>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

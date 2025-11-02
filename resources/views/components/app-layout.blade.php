@@ -37,8 +37,8 @@
                                 <ul>
                                     <li><a href="{{ route('Paciente.show') }}" class="text text-sm sm:text-xl"><i
                                                 class="fa-solid fa-clipboard-medical"></i> Pacientes</a></li>
-                                    <li><a href="#" class="text text-sm sm:text-xl"><i
-                                                class="fa-solid fa-weight-scale"></i> Pesaje</a></li>
+                                    <li><a href="{{ route('Servicio.show') }}" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-cart-shopping"></i> Servicios</a></li>
                                     <li><a href="#" class="text text-sm sm:text-xl"><i
                                                 class="fa-solid fa-money-check-dollar-pen"></i> Venta</a></li>
                                     <li><a href="#" class="text text-sm sm:text-xl"><i

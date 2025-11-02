@@ -47,7 +47,7 @@
                             <td class="text-center">{{ $item->height }}</td>
                             <td class="text-center">{{ $item->type_blood }}</td>
                             <td class="text-center">{{ $item->entrydate->format('d/m/Y') }}</td>
-                            <td class="flex flex-col items-center justify-center gap-2 w-full sm:flex-row sm:items-start sm:justify-start">
+                            <td class="flex flex-col items-center justify-center gap-2 w-full sm:flex-row sm:items-center sm:justify-center">
                                 <div class="flex gap-2">
                                     <button class="btn btn-secondary btn-sm"
                                         onclick="document.getElementById('create_emergencia_modal_{{ $item->id }}').showModal()">
