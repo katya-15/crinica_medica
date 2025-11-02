@@ -33,22 +33,10 @@
                         <ul tabindex="0"
                             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
                             <li>
-                                <h2 class="menu-title">Bovinos</h2>
-                                <ul>
-                                    <li><a href="#" class="text text-sm sm:text-xl"><i
-                                                class="fa-solid fa-cowbell"></i> general</a>
-                                    </li>
-                                    <li><a href="#" class="text text-sm sm:text-xl"> <i
-                                                class="fa-solid fa-bottle-baby"></i>Crianza</a></li>
-                                    <li><a href="#" class="text text-sm sm:text-xl"><i
-                                                class="fa-solid fa-meat"></i> Engorde</a></li>
-                                </ul>
-                            </li>
-                            <li>
                                 <h2 class="menu-title">Operaciones</h2>
                                 <ul>
-                                    <li><a href="#" class="text text-sm sm:text-xl"><i
-                                                class="fa-solid fa-file-contract"></i> RanchDay</a></li>
+                                    <li><a href="{{ route('Paciente.show') }}" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-clipboard-medical"></i> Pacientes</a></li>
                                     <li><a href="#" class="text text-sm sm:text-xl"><i
                                                 class="fa-solid fa-weight-scale"></i> Pesaje</a></li>
                                     <li><a href="#" class="text text-sm sm:text-xl"><i
@@ -85,13 +73,8 @@
                             </a>
                         </li>
                     </ul>
-
-
                 </div>
-
-
             </div>
-
         </div>
 
     </header>
