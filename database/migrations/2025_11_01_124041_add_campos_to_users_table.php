@@ -19,9 +19,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->integer('phone')->maxlength(12);
             $table->string('rol');
-            $table->date('birthday');
-            $table->string('address');
-            $table->string('dpi')->maxlength(13);
+            $table->string('dpi')->maxlength(13)->unique();
         });
         
         User::create([
@@ -32,8 +30,6 @@ return new class extends Migration
             'status' => 1,
             'rol' => 'admin',
             'phone' => '44815615',
-            'birthday' => '1990-01-01',
-            'address' => '3ra calle 12-09 zona 12, Cobán',
             'dpi' => '4568456982145',
         ]);
     }
