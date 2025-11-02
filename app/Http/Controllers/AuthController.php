@@ -22,7 +22,7 @@ class AuthController extends Controller
         $valid['username'] = strtolower($valid['username']);
         if (Auth::attempt($valid)) {
             $user = Auth::user();
-            if ($user->status === 1) {
+            if ($user->status === '1') {
                 return redirect(route('Auth.dashboard'))
                     ->with('success', 'Welcome back')
                     ->with(compact('user'));

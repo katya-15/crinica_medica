@@ -32,7 +32,7 @@
                     <div class="space-y-4 sm:space-y-6">
                         <form action="{{ route('Auth.login') }}" method="POST" class="space-y-3 sm:space-y-4">
                             @csrf
-                            <!-- Email Field -->
+
                             <div class="form-control">
                                 <label class="label">
                                     <span class="label-text font-medium text-white">Usuario</span>
@@ -41,7 +41,7 @@
                                     <i
                                         class="fa-solid fa-user-cowboy absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black"></i>
 
-                                    <input type="username" id="username" name="username" placeholder="Oxri"
+                                    <input type="text" id="username" name="username" placeholder="Oxri"
                                         class="input input-bordered w-full pl-10 bg-gray-50/50 border-gray-200 focus:bg-white focus:border-indigo-500 transition-all duration-200"
                                         required />
                                 </div>
@@ -86,9 +86,10 @@
                                 </svg>
                             </button>
                         </form>
-                        
+
                     </div>
                 </div>
+                {{-- <a href="{{ route('Auth.dashboard') }}"></a> --}}
                 <div
                     class="relative bg-image-gradient flex items-center justify-center order-1 md:order-2 min-h-[200px] md:min-h-auto">
                     <!-- Background Image -->
@@ -114,9 +115,7 @@
                     </div>
                 </div>
             </div>
-            <div
-                class="relative bg-image-gradient flex items-center justify-center order-1 md:order-2 min-h-[200px] md:min-h-auto">
-            </div>
+
         </div>
     </div>
 </body>
