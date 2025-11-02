@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="forest">
+<html lang="en" data-theme="cupcake">
 
 <head>
     <meta charset="UTF-8">
@@ -17,13 +17,13 @@
 
 <body class="min-h-screen flex flex-col">
     <!-- Menú de navegación -->
-    <header class="bg-white/10 backdrop-blur-md border-b border-white/10 shadow-lg relative z-50">
+    <header class="bg-neutral backdrop-blur-md border-b border-neutral shadow-lg relative z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
                     <div class="dropdown">
                         <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-                            <button class="btn btn-ghost btn-circle">
+                            <button class="btn btn-ghost btn-circle text-white">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 6h16M4 12h16M4 18h16"></path>
@@ -32,29 +32,62 @@
                         </div>
                         <ul tabindex="0"
                             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
-                            
+                            <li>
+                                <h2 class="menu-title">Bovinos</h2>
+                                <ul>
+                                    <li><a href="#" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-cowbell"></i> general</a>
+                                    </li>
+                                    <li><a href="#" class="text text-sm sm:text-xl"> <i
+                                                class="fa-solid fa-bottle-baby"></i>Crianza</a></li>
+                                    <li><a href="#" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-meat"></i> Engorde</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h2 class="menu-title">Operaciones</h2>
+                                <ul>
+                                    <li><a href="#" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-file-contract"></i> RanchDay</a></li>
+                                    <li><a href="#" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-weight-scale"></i> Pesaje</a></li>
+                                    <li><a href="#" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-money-check-dollar-pen"></i> Venta</a></li>
+                                    <li><a href="#" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-chart-line-down"></i> Gastos</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <h2 class="menu-title">Administración</h2>
+                                <ul>
+                                    <li><a href="{{ route('User.show') }}" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-user"></i> Usuarios</a></li>
+                                    <li><a href="#" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-briefcase-blank"></i> Administración</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
-                    <div>
-                        <a href="{{ route('Auth.dashboard') }}" class="text-2xl font-bold">Finca el
-                            Suspiro</a>
-                        {{-- <div
+                    <div class="text-white">
+                        <a href="{{ route('Auth.dashboard') }}" class="text-2xl font-bold">Clinica Quetzal</a>
+                        <div
                             x-data='{ username: @json(Auth::user()->name), lastName: @json(Auth::user()->last_name) }'>
                             Bienvenido: <strong x-text="username + ' ' + lastName"></strong>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
                 <div x-data="{ openChangePassword: false }" class="flex items-center space-x-4">
-    <ul class="btn btn-ghost btn-circle text-white">
-        <li>
-            <a href="{{ route('Auth.logout') }}" class="btn btn-circle">
-                <i class="fa-light fa-arrow-right-from-bracket text-sm sm:text-xl"></i>
-            </a>
-        </li>
-    </ul>
+                    <ul class="btn btn-ghost btn-circle text-white">
+                        <li>
+                            <a href="{{ route('Auth.logout') }}" class="btn btn-circle">
+                                <i class="fa-light fa-arrow-right-from-bracket text-sm sm:text-xl"></i>
+                            </a>
+                        </li>
+                    </ul>
 
-    
-</div>
+
+                </div>
 
 
             </div>
@@ -67,78 +100,40 @@
         {{ $slot }}
     </main>
     <!-- Pie de pagina -->
-    <footer class="bg-neutral text-white relative overflow-hidden border-t border-white/10">
-        <!-- Decorative horseshoe pattern -->
-        <div class="absolute inset-0 horseshoe-pattern"></div>
-        <div class="relative z-10 max-w-6xl mx-auto px-6 py-12">
-            <!-- Main content -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-                <!-- Logo section with main horseshoe -->
-                <div class="lg:col-span-1 text-center lg:text-left">
-                    <div class="flex items-center justify-center lg:justify-start mb-4">
-                        <div class="relative">
-                            <svg class="w-16 h-16 text-yellow-400 drop-shadow-lg" viewBox="0 0 24 24"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 2C7.5 2 4 5.5 4 10v6c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2v-3c0-.6.4-1 1-1s1 .4 1 1v3c0 1.1.9 2 2 2s2-.9 2-2v-3c0-.6.4-1 1-1s1 .4 1 1v3c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2v-6c0-4.5-3.5-8-8-8zm6 14h-1v-3c0-1.7-1.3-3-3-3s-3 1.3-3 3v3s0 0 0 0v-3c0-1.7-1.3-3-3-3s-3 1.3-3 3v3H6v-6c0-3.3 2.7-6 6-6s6 2.7 6 6v6z" />
-                                <circle cx="8" cy="6" r="1" />
-                                <circle cx="16" cy="6" r="1" />
-                            </svg>
-                            <div class="absolute inset-0 pulse-glow bg-yellow-400/20 rounded-full blur-xl"></div>
-                        </div>
-                        <div class="ml-3">
-                            <h2 class="font-bold text-2xl">FINCA EL SUSPIRO</h2>
-                            <p class="text-yellow-200 text-sm">Sistema de Gestión</p>
-                        </div>
-                    </div>
-                    <p class="text-amber-100 text-sm leading-relaxed">
-                        Sistema integral de gestión ganadera que combina tecnología moderna
-                        con el conocimiento tradicional del campo.
-                    </p>
-                </div>
-                <!-- Contact Info -->
-                <div class="text-center lg:text-left">
-                    <h3 class="font-semibold text-lg mb-4 text-yellow-300">Contacto</h3>
-                    <div class="space-y-3">
-                        <!-- Dirección -->
-                        <div class="flex flex-col items-center text-center sm:flex-row sm:text-left sm:justify-start">
-                            <i class="fa-solid fa-location-dot w-4 h-4 mr-2 text-yellow-400"></i>
-                            <span class="text-sm">
-                                Entrar a la aldea Semuy desde la ruta de Chisec, recorrer 17 km y seguir hasta el
-                                caserío La Esperanza.
-                            </span>
-                        </div>
-                        <!-- Teléfonos -->
-                        <div
-                            class="flex flex-col items-center text-center sm:flex-row sm:text-left sm:justify-start sm:space-x-4">
-                            <div class="flex items-center">
-                                <i class="fa-solid fa-phone-office w-4 h-4 mr-2 text-yellow-400"></i>
-                                <span class="text-sm">+502 5044 3417</span>
-                            </div>
-                            <span class="text-sm">+502 5332 5433</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Social Media -->
-                <div class="text-center lg:text-left">
-                    <h3 class="font-semibold text-lg mb-4 text-yellow-300">Síguenos</h3>
-                    <div class="flex justify-center lg:justify-start space-x-4 mb-4">
-                        <a href="#"
-                            class="w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 transform hover:scale-110
-                   bg-gradient-to-r from-[#f09433] via-[#dc2743] to-[#bc1888] hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888]">
-                            <i class="fa-brands fa-instagram text-white"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 flex items-center justify-center bg-blue-500 hover:bg-blue-400 rounded-full transition-all duration-300 transform hover:scale-110">
-                            <i class="fa-brands fa-facebook text-white"></i>
-                        </a>
-                    </div>
-                    <p class="text-amber-100 text-xs">
-                        Comparte tus momentos con #FINCA_EL_SUSPIRO
-                    </p>
-                </div>
+    <footer class="footer footer-horizontal footer-center bg-primary text-base-content rounded p-2">
+        <nav class="grid grid-flow-col gap-4">
+        </nav>
+        <nav>
+            <div class="grid grid-flow-col gap-4">
+                <a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        class="fill-current">
+                        <path
+                            d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
+                        </path>
+                    </svg>
+                </a>
+                <a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        class="fill-current">
+                        <path
+                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
+                        </path>
+                    </svg>
+                </a>
+                <a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        class="fill-current">
+                        <path
+                            d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
+                        </path>
+                    </svg>
+                </a>
             </div>
-        </div>
+        </nav>
+        <aside>
+            <p class="text-neutral">Derechos reservados @katya_Company</p>
+        </aside>
     </footer>
 </body>
 

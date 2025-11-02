@@ -107,8 +107,8 @@
                             <!-- Description -->
                             {{-- style="font-family: 'Quicksand', sans-serif; font-size: 24px; color:black; -webkit-text-stroke: 1px white; font-weight: 900;" --}}
                             <p class="text-white text-xs sm:text-lg leading-relaxed">
-                                Todo es posible -había dicho-. No somos dioses, no lo sabemos todo. -Y había añadido-:
-                                el coma profundo es un misterio para la medicina.
+                                Todo es posible había dicho. No somos dioses, no lo sabemos todo. Y había añadido el
+                                coma profundo es un misterio para la medicina.
                             </p>
                             <span class="text-white text-xs sm:text-base leading-relaxed">Marc Levy</span>
                         </div>

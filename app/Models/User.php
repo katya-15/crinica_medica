@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Medico;
 
 class User extends Authenticatable
 {
@@ -25,13 +26,11 @@ class User extends Authenticatable
         'last_name',
         'phone',
         'rol',
-        'birthday',
-        'address',
         'dpi',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * The attributes that should be hidden for serialization.class=""
      *
      * @var list<string>
      */
@@ -51,5 +50,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    //uno a muchos un usuario medico puede tener muchas expecialidad 
+    public function cows()
+    {
+        return $this->hasMany(Medico::class, 'cod_user');
     }
 }

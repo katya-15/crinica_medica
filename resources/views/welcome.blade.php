@@ -12,19 +12,19 @@
 <body class="min-h-screen flex flex-col">
 
     {{-- CONTENIDO DE NAVEGACIÓN  --}}
-    <header class="backdrop-blur-md border-b border-teal-500 shadow-lg relative z-50">
-  <div class="navbar bg-teal-500 text-neutral px-4">
-    <!-- Lado izquierdo -->
-    <div class="flex-1">
-      <button class="btn btn-ghost text-xl">Centro de salud Quetzal</button>
-    </div>
+    <header class="backdrop-blur-md border-b border-emerald-200 shadow-lg relative z-50">
+        <div class="navbar bg-neutral text-white px-4">
+            <!-- Lado izquierdo -->
+            <div class="flex-1">
+                <button class="btn btn-ghost text-xl">Centro de salud Quetzal</button>
+            </div>
 
-    <!-- Lado derecho -->
-    <div class="flex-none flex items-center gap-4">
-      <a href="{{ route('login') }}" class="btn btn-ghost">Login</a>
-    </div>
-  </div>
-</header>
+            <!-- Lado derecho -->
+            <div class="flex-none flex items-center gap-4">
+                <a href="{{ route('login') }}" class="btn btn-ghost">Login</a>
+            </div>
+        </div>
+    </header>
 
     {{-- CONTENIDO DE CUERPO DE LADINGPAGE --}}
     <main class="flex-grow container mx-auto px-4 py-6">
@@ -152,7 +152,7 @@
 
     </main>
     {{-- CONTENIDO DE FOOTER PIE DE PAGINA --}}
-    <footer class="footer footer-horizontal footer-center bg-emerald-300 text-base-content rounded p-2">
+    <footer class="footer footer-horizontal footer-center bg-primary text-base-content rounded p-2">
         <nav class="grid grid-flow-col gap-4">
         </nav>
         <nav>
