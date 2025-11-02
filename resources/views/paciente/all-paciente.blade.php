@@ -48,6 +48,17 @@
                             <td class="text-center">{{ $item->type_blood }}</td>
                             <td class="text-center">{{ $item->entrydate->format('d/m/Y') }}</td>
                             <td class="flex flex-col items-center justify-center gap-2 w-full sm:flex-row sm:items-start sm:justify-start">
+                                <div class="flex gap-2">
+                                    <button class="btn btn-secondary btn-sm"
+                                        onclick="document.getElementById('create_emergencia_modal_{{ $item->id }}').showModal()">
+                                        Cont. Emergencia 
+                                    </button>
+                                    <x-app-modal-create 
+                                        modalId="create_emergencia_modal_{{ $item->id }}" 
+                                        title="Crear contacto de emergencia" 
+                                        formAction="{{ route('Paciente.emergency', $item->id ) }}"
+                                        :form="view('paciente.emergency-form', ['paciente' => $item])->render()" />
+                                </div>
                                 
                             </td>
                         </tr>

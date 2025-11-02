@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('emergencia', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('last_name');
+            //relacion que tienen el paciente con su contacto de emergencia 
+            $table->string('relationship');
+            $table->string('phone');
+            $table->string('address');
+            $table->foreignId('cod_paciente')->references('id')->on('paciente')->onDelete('no action');
+
             $table->timestamps();
         });
     }
