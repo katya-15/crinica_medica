@@ -59,6 +59,17 @@
                                         formAction="{{ route('Paciente.emergency', $item->id ) }}"
                                         :form="view('paciente.emergency-form', ['paciente' => $item])->render()" />
                                 </div>
+                                <div class="flex gap-2">
+                                    <button class="btn btn-success btn-sm"
+                                        onclick="document.getElementById('create_cita_modal_{{ $item->id }}').showModal()">
+                                        Crear cita
+                                    </button>
+                                    <x-app-modal-create 
+                                        modalId="create_cita_modal_{{ $item->id }}" 
+                                        title="Crear cita" 
+                                        formAction="{{ route('Cita.store', $item->id ) }}"
+                                        :form="view('cita.cita-form', ['paciente' => $item, 'servisio' => $servisio, 'doctor' => $doctor])->render()" />
+                                </div>
                                 
                             </td>
                         </tr>

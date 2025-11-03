@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Medico;
+use App\Models\Cita;
 
 class User extends Authenticatable
 {
@@ -56,5 +57,9 @@ class User extends Authenticatable
     public function medico()
     {
         return $this->hasMany(Medico::class, 'cod_user');
+    }
+
+    public function cita(){
+        return $this->hasMany(Cita::class, 'cod_user');
     }
 }

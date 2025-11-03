@@ -21,11 +21,13 @@ class ServicioController extends Controller
             'name' => 'required|string',
             'description' => 'required|string|max:1000',
             'price' => 'required|numeric|min:200|max:800000',
+            'time' => 'required|numeric',
         ]);
         $date = $request->only([
             'name',
             'description',
             'price',
+            'time',
 
         ]);
         $date['status'] = '1';
