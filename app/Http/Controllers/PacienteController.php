@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Paciente;
+use App\Models\User;
+use App\Models\Servicio;
 use App\Models\Emergencia;
 
 
@@ -11,9 +13,11 @@ class PacienteController extends Controller
 {
     public function show()
     {
+        $doctor = User::where('status', '1')->where('rol', 'medico')->get();
+        $servisio = Servicio::where('status', '1')->get();
         $paciente = Paciente::where('status', '1')->orderBY('created_at', 'desc')->get();
         $paciente_inact = Paciente::where('status', '2')->orderBY('created_at', 'desc')->get();
-        return view('paciente.all-paciente', compact('paciente', 'paciente_inact'));
+        return view('paciente.all-paciente', compact('paciente', 'paciente_inact', 'servisio', 'doctor'));
     }
 
     public function store(Request $request)

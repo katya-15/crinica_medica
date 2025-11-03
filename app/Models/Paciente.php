@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App\Models\Emergencia;
+use App\Models\Cita;
 
 class Paciente extends Model
 {
@@ -46,5 +47,9 @@ class Paciente extends Model
     public function emergencias()
     {
         return $this->hasMany(Emergencia::class, 'cod_paciente');
+    }
+
+    public function cita(){
+        return $this->hasMany(Cita::class, 'cod_paciente');
     }
 }

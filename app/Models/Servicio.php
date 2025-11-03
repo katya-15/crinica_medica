@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Cita;
 
 class Servicio extends Model
 {
@@ -14,10 +15,10 @@ class Servicio extends Model
         'description',
         'price',
         'status',
+        'time',
     ];
 
-    // public function emergencias()
-    // {
-    //     return $this->hasMany(Emergencia::class, 'cod_paciente');
-    // }
+    public function cita(){
+        return $this->hasMany(Cita::class, 'cod_servicio');
+    }
 }

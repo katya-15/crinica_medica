@@ -15,6 +15,10 @@
                 <input type="number" name="price" id="price" required
                     class="input input-bordered input-primary w-full" />
             </div>
+            <div>
+                <label for="time">Tiempo del servicio </label>
+                <input type="number" name="time" id="time" class="input input-primary w-full" step="1">
+            </div>
             <div class="sm:col-span-2">
                 <label for="description" class="label">
                     <span class="label-text font-medium">Descripcion del servicio </span>
@@ -22,7 +26,6 @@
                 <textarea name="description" id="description" cols="30" rows="10"
                 class="textarea textarea-bordered w-full">
                 </textarea>
-                
             </div>
         </div>
     </div>
