@@ -49,7 +49,7 @@
                                 <ul>
                                     <li><a href="{{ route('User.show') }}" class="text text-sm sm:text-xl"><i
                                                 class="fa-solid fa-user"></i> Usuarios</a></li>
-                                    <li><a href="#" class="text text-sm sm:text-xl"><i
+                                    <li><a href="{{ route('Factura.show' )}}" class="text text-sm sm:text-xl"><i
                                                 class="fa-solid fa-briefcase-blank"></i> Administración</a></li>
                                 </ul>
                             </li>
