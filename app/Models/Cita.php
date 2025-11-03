@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Models\Factura;
+
 class Cita extends Model
 {
     //
@@ -43,5 +45,10 @@ class Cita extends Model
                     ->format('H:i');
             }
         });
+    }
+
+    public function factura()
+    {
+        return $this->hasOne(Factura::class, 'code_cita');
     }
 }
