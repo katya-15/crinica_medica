@@ -47,6 +47,7 @@
                             <td class="text-center">{{ $item->type_blood }}</td>
                             <td class="text-center">{{ $item->entrydate->format('d/m/Y') }}</td>
                             <td class="flex flex-col items-center justify-center gap-2 w-full sm:flex-row sm:items-center sm:justify-center">
+                                @if ($user->rol === 'admin')
                                 <div class="flex gap-2">
                                     <form action="{{ route('Paciente.deactivate', $item->id) }}" method="POST">
                                         @csrf
@@ -56,6 +57,7 @@
                                             Eliminar</button>
                                     </form>
                                 </div>
+                                @endif
                                 <div class="flex gap-2">
                                     <button class="btn btn-secondary btn-sm"
                                         onclick="document.getElementById('create_emergencia_modal_{{ $item->id }}').showModal()">
@@ -110,6 +112,7 @@
                             <td class="text-center">{{ $item->type_blood }}</td>
                             <td class="text-center">{{ $item->entrydate->format('d/m/Y') }}</td>
                             <td class="flex flex-col items-center justify-center gap-2 w-full sm:flex-row sm:items-center sm:justify-center">
+                                @if ($user->rol === 'admin')
                                 <div class="flex gap-2">
                                     <form action="{{ route('Paciente.restore', $item->id) }}" method="POST">
                                         @csrf
@@ -119,6 +122,7 @@
                                             Restaurar</button>
                                     </form>
                                 </div>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
