@@ -8,6 +8,7 @@ use App\Models\Paciente;
 use App\Models\Cita;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -84,6 +85,34 @@ class AuthController extends Controller
 
         $fechaHoy = \Carbon\Carbon::now()->format('d/m/Y');
 
+        $medicosActivos = User::where('status', '1')
+            ->where('rol', 'medico')
+            ->count();
+
+        $rankingMedicos = DB::table('cita')
+            ->select(
+                'cod_user',
+                DB::raw('SUM(CASE WHEN status = 2 THEN 1 ELSE 0 END) as completadas'),
+                DB::raw('SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END) as pendientes')
+            )
+            ->whereMonth('appointment_date', $mesActual)
+            ->whereYear('appointment_date', $anioActual)
+            ->groupBy('cod_user')
+            ->get();
+        $labels = [];
+        $completadas = [];
+        $pendientes = [];
+        foreach ($rankingMedicos as $dato) {
+            $medico = User::where('id', $dato->cod_user)
+                ->where('rol', 'medico')
+                ->where('status', '1')
+                ->first();
+
+            $labels[] = $medico ? $medico->name : 'Desconocido';
+            $completadas[] = $dato->completadas;
+            $pendientes[] = $dato->pendientes;
+        }
+        
 
         return view('dashboard', compact(
             'paciente',
@@ -97,6 +126,10 @@ class AuthController extends Controller
             'citasCompletasHoy',
             'fechaHoy',
             'user',
+            'medicosActivos',
+            'labels',
+            'completadas',
+            'pendientes',
         ));
     }
 }

@@ -72,7 +72,115 @@
                 </div>
 
 
+                <!-- Fila inferior - Estadísticas verticales -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Downloads -->
+                    <div class="stat bg-base-100 shadow rounded-xl border flex flex-col justify-center">
+                        <div class="stat-title text-gray-600">Medicos activos</div>
+                        <div class="stat-value text-3xl">{{ number_format($medicosActivos) }}</div>
+                    </div>
+                </div>
+                <div class="stat bg-base-100 shadow rounded-xl border p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="stat-title text-gray-600 text-lg">Ranking de citas por médicos</div>
+                        <div class="text-sm text-gray-500">Mes actual</div>
+                    </div>
+                    <div class="h-64">
+                        <canvas id="visitasChart"></canvas>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Citas planificadas -->
+            <button class="btn btn-primary shadow rounded-xl border flex flex-col items-center p-4 w-full">
+                Numeros de citas por mes
+            </button>
+
+            <!-- Citas pendientes -->
+            <button class="btn btn-secondary shadow rounded-xl border flex flex-col items-center p-4 w-full">
+                ingresos por servicios 
+            </button>
+
+            <!-- Citas completadas -->
+            <button class="btn btn-accent shadow rounded-xl border flex flex-col items-center p-4 w-full">
+                pacientes nuevos vs recurente 
+            </button>
+
+        </div>
+    </div>
 </x-app-layout>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('visitasChart').getContext('2d');
+
+        // 🔹 Datos enviados desde el controlador (Laravel → JS)
+        const labels = @json($labels);
+        const completadas = @json($completadas);
+        const pendientes = @json($pendientes);
+
+        // 🔹 Crear gráfico de barras
+        const visitasChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                        label: 'Citas completadas',
+                        data: completadas,
+                        backgroundColor: 'rgba(59, 130, 246, 0.7)', // azul
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Citas pendientes',
+                        data: pendientes,
+                        backgroundColor: 'rgba(234, 179, 8, 0.7)', // amarillo
+                        borderColor: 'rgba(234, 179, 8, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Número de citas'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Médicos'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    title: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.formattedValue}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
