@@ -87,4 +87,16 @@ class PacienteController extends Controller
         Emergencia::create($date);
         return redirect(route('Paciente.show'))->with('success', 'Contacto de emergencia creado con exito');
     }
+
+    public function deactivate(Paciente $paciente){
+        $paciente->status = '2';
+        $paciente->save();
+        return redirect(route('Paciente.show'))->with('success', 'Usuario eliminado');
+    }
+
+    public function restore(Paciente $paciente){
+        $paciente->status = '1';
+        $paciente->save();
+        return redirect(route('Paciente.show'))->with('success', 'Usuario restaurado');
+    }
 }

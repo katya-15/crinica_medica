@@ -37,23 +37,33 @@
                 <tbody>
                     @foreach ($user as $item)
                         <tr class="text-center">
-
                             <td class="text-center">{{ $item->name }}</td>
                             <td class="text-center">{{ $item->last_name }}</td>
                             <td class="text-center">{{ $item->phone }}</td>
                             <td class="text-center">{{ $item->dpi }}</td>
                             <td class="text-center">{{ $item->rol }}</td>
                             <td class="flex flex-col items-center justify-center gap-2 w-full sm:flex-row sm:items-start sm:justify-start">
+                                <div class="flex gap-2">
+                                    <form action="{{ route('User.deactivate', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-sm btn-accent">
+                                            <i class="fa-solid fa-trash"></i>
+                                            Eliminar</button>
+                                    </form>
+                                </div>
                                 @if ($item->rol === 'medico')
-                                    <button class="btn btn-secondary btn-sm"
-                                        onclick="document.getElementById('create_especialidad_modal_{{ $item->id }}').showModal()">
-                                        agregar especialidad
-                                    </button>
-                                    <x-app-modal-create 
-                                        modalId="create_especialidad_modal_{{ $item->id }}" 
-                                        title="Crear especialidad" 
-                                        formAction="{{ route('User.specialty', $item->id ) }}"
-                                        :form="view('user.expecialiti-form', ['user' => $item])->render()" />
+                                    <div class="flex gap-2">
+                                        <button class="btn btn-secondary btn-sm"
+                                            onclick="document.getElementById('create_especialidad_modal_{{ $item->id }}').showModal()">
+                                            agregar especialidad
+                                        </button>
+                                        <x-app-modal-create 
+                                            modalId="create_especialidad_modal_{{ $item->id }}" 
+                                            title="Crear especialidad" 
+                                            formAction="{{ route('User.specialty', $item->id ) }}"
+                                            :form="view('user.expecialiti-form', ['user' => $item])->render()" />
+                                    </div>
                                 @endif
                             </td>
                         </tr>
@@ -61,10 +71,39 @@
                 </tbody>
             </x-slot>
             <x-slot name="tab_1">
-                muu bien
+                <thead class="text-center text-xs sm:text-sm">
+                    <tr>
+                        <th class="px-2 py-3 whitespace-nowrap">Nombre</th>
+                        <th class="px-2 py-3 whitespace-nowrap">Apellido</th>
+                        <th class="px-2 py-3 whitespace-nowrap">Telefono</th>
+                        <th class="px-2 py-3 whitespace-nowrap">DPI</th>
+                        <th class="px-2 py-3 whitespace-nowrap">rol</th>
+                        <th class="px-2 py-3 whitespace-nowrap">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($user_inact as $item)
+                        <tr class="text-center">
+                            <td class="text-center">{{ $item->name }}</td>
+                            <td class="text-center">{{ $item->last_name }}</td>
+                            <td class="text-center">{{ $item->phone }}</td>
+                            <td class="text-center">{{ $item->dpi }}</td>
+                            <td class="text-center">{{ $item->rol }}</td>
+                            <td class="flex flex-col items-center justify-center gap-2 w-full sm:flex-row sm:items-start sm:justify-start">
+                                <div class="flex gap-2">
+                                    <form action="{{ route('User.restore', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-sm btn-accent">
+                                            <i class="fa-solid fa-trash-undo"></i>
+                                            Eliminar</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
             </x-slot>
-
         </x-app-table>
-
     </div>
 </x-app-layout>

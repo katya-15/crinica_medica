@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cupcake">
+<html lang="en" data-theme="silk">
 
 <head>
     <meta charset="UTF-8">
@@ -76,7 +76,7 @@
                             </div>
                             <!-- Login Button -->
                             <button type="submit"
-                                class="btn w-full bg-primary hover:bg-purple-700 border-0 text-black hover:text-white shadow-lg normal-case text-base">
+                                class="btn w-full bg-success hover:bg-purple-700 border-0 text-black hover:text-white shadow-lg normal-case text-base">
                                 Iniciar Sesión
                                 <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

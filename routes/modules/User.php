@@ -8,4 +8,6 @@ Route::group(['prefix' => 'User', 'middleware' => ['auth', RolMiddleware::class 
     Route::get('/', [UserController::class, 'show'])->name('User.show');
     Route::post('/store', [UserController::class, 'store'])->name('User.store');    
     Route::post('/specialty', [UserController::class, 'specialty'])->name('User.specialty');    
+    Route::put('/deactivate/{user}', [UserController::class, 'deactivate'])->name('User.deactivate');
+    Route::put('/restore/{user}', [UserController::class, 'restore'])->name('User.restore');
 });
