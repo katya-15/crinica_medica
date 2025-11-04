@@ -30,7 +30,7 @@
         @endif
 
         {{-- Contenedor de citas semanales --}}
-        <div class="p-6 bg-base-100 rounded-xl shadow-md" x-data="citasSemana({{ json_encode($citas) }})">
+        <div class="p-6 bg-base-100 rounded-xl " x-data="citasSemana({{ json_encode($citas) }})">
             {{-- Filtros --}}
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
                 <div class="flex items-center gap-2">
@@ -172,7 +172,8 @@
                 inicio.setHours(0, 0, 0, 0)
                 const fin = new Date(dia)
                 fin.setHours(23, 59, 59, 999)
-                return this.citas.filter(c => {
+                
+                const citasFiltradas = this.citas.filter(c => {
                     const dt = new Date(c.fecha)
                     if (this.filtroDoctor !== 'all' && c.cod_user != this.filtroDoctor)
                         return false
@@ -182,6 +183,21 @@
                         return false
                     return dt >= inicio && dt <= fin
                 })
+
+                // 🔹 ORDENAR LAS CITAS POR HORA
+                return citasFiltradas.sort((a, b) => {
+                    // Convertir horas a minutos para comparar numéricamente
+                    const horaA = this.horaAMinutos(a.hora_inicio)
+                    const horaB = this.horaAMinutos(b.hora_inicio)
+                    return horaA - horaB
+                })
+            },
+
+            // Función auxiliar para convertir hora HH:MM:SS a minutos
+            horaAMinutos(hora) {
+                if (!hora) return 0
+                const [horas, minutos] = hora.split(':')
+                return parseInt(horas) * 60 + parseInt(minutos)
             },
 
             cambiarSemana(delta) {

@@ -62,4 +62,16 @@ class UserController extends Controller
         Medico::create($date);
         return redirect(route('User.show'))->with('success', 'Especialidad creado con exito');
     }
+
+    public function deactivate(User $user){
+        $user->status = '2';
+        $user->save();
+        return redirect(route('User.show'))->with('success', 'Usuario eliminado');
+    }
+
+    public function restore(User $user){
+        $user->status = '1';
+        $user->save();
+        return redirect(route('User.show'))->with('success', 'Usuario restaurado');
+    }
 }

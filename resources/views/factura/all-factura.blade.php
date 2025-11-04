@@ -18,7 +18,7 @@
         <x-app-modal-create modalId="create_factura_modal" title="Crear factura"
             formAction="{{ route('Factura.store') }}" :form="view('factura.factura-form', ['metodos' => $metodos, 'citas' => $citas])->render()" />
         {{-- tabla para vista de admin --}}
-        <x-app-table :tabs="[['label' => 'Activos'], ['label' => 'Inactivos']]">
+        <x-app-table :tabs="[['label' => 'Activos']]">
             <x-slot name="tab_0">
                 <thead class="text-center text-xs sm:text-sm">
                     <tr>
@@ -95,10 +95,6 @@
                         @endforelse
                     </tbody>
                 </x-slot>
-                <x-slot name="tab_1">
-                    muu bien
-                </x-slot>
-
             </x-app-table>
 
         </div>

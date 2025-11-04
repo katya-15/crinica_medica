@@ -39,6 +39,68 @@
                 <tbody>
                     @foreach ($paciente as $item)
                         <tr class="text-center">
+                            <td class="text-center">{{ $item->name }}</td>
+                            <td class="text-center">{{ $item->last_name }}</td>
+                            <td class="text-center">{{ $item->age }}</td>
+                            <td class="text-center">{{ $item->weight }}</td>
+                            <td class="text-center">{{ $item->height }}</td>
+                            <td class="text-center">{{ $item->type_blood }}</td>
+                            <td class="text-center">{{ $item->entrydate->format('d/m/Y') }}</td>
+                            <td class="flex flex-col items-center justify-center gap-2 w-full sm:flex-row sm:items-center sm:justify-center">
+                                <div class="flex gap-2">
+                                    <form action="{{ route('Paciente.deactivate', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-sm btn-accent">
+                                            <i class="fa-solid fa-trash"></i>
+                                            Eliminar</button>
+                                    </form>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button class="btn btn-secondary btn-sm"
+                                        onclick="document.getElementById('create_emergencia_modal_{{ $item->id }}').showModal()">
+                                        <i class="fa-solid fa-phone-plus"></i>
+                                         Emergencia 
+                                    </button>
+                                    <x-app-modal-create 
+                                        modalId="create_emergencia_modal_{{ $item->id }}" 
+                                        title="Crear contacto de emergencia" 
+                                        formAction="{{ route('Paciente.emergency', $item->id ) }}"
+                                        :form="view('paciente.emergency-form', ['paciente' => $item])->render()" />
+                                </div>
+                                <div class="flex gap-2">
+                                    <button class="btn btn-neutral btn-sm"
+                                        onclick="document.getElementById('create_cita_modal_{{ $item->id }}').showModal()">
+                                        <i class="fa-solid fa-calendar-plus"></i>
+                                        Cita
+                                    </button>
+                                    <x-app-modal-create 
+                                        modalId="create_cita_modal_{{ $item->id }}" 
+                                        title="Crear cita" 
+                                        formAction="{{ route('Cita.store', $item->id ) }}"
+                                        :form="view('cita.cita-form', ['paciente' => $item, 'servisio' => $servisio, 'doctor' => $doctor])->render()" />
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </x-slot>
+            <x-slot name="tab_1">
+                <thead class="text-center text-xs sm:text-sm">
+                    <tr>
+                        <th class="px-2 py-3 whitespace-nowrap">Nombre</th>
+                        <th class="px-2 py-3 whitespace-nowrap">Apellido</th>
+                        <th class="px-2 py-3 whitespace-nowrap">Edad</th>
+                        <th class="px-2 py-3 whitespace-nowrap">Peso</th>
+                        <th class="px-2 py-3 whitespace-nowrap">Altura</th>
+                        <th class="px-2 py-3 whitespace-nowrap">Tipo de sangre</th>
+                        <th class="px-2 py-3 whitespace-nowrap">Fecha de ingreso</th>
+                        <th class="px-2 py-3 whitespace-nowrap">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($paciente_inact as $item)
+                        <tr class="text-center">
 
                             <td class="text-center">{{ $item->name }}</td>
                             <td class="text-center">{{ $item->last_name }}</td>
@@ -49,35 +111,18 @@
                             <td class="text-center">{{ $item->entrydate->format('d/m/Y') }}</td>
                             <td class="flex flex-col items-center justify-center gap-2 w-full sm:flex-row sm:items-center sm:justify-center">
                                 <div class="flex gap-2">
-                                    <button class="btn btn-secondary btn-sm"
-                                        onclick="document.getElementById('create_emergencia_modal_{{ $item->id }}').showModal()">
-                                        Cont. Emergencia 
-                                    </button>
-                                    <x-app-modal-create 
-                                        modalId="create_emergencia_modal_{{ $item->id }}" 
-                                        title="Crear contacto de emergencia" 
-                                        formAction="{{ route('Paciente.emergency', $item->id ) }}"
-                                        :form="view('paciente.emergency-form', ['paciente' => $item])->render()" />
+                                    <form action="{{ route('Paciente.restore', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-sm btn-accent">
+                                            <i class="fa-solid fa-trash-undo"></i>
+                                            Restaurar</button>
+                                    </form>
                                 </div>
-                                <div class="flex gap-2">
-                                    <button class="btn btn-success btn-sm"
-                                        onclick="document.getElementById('create_cita_modal_{{ $item->id }}').showModal()">
-                                        Crear cita
-                                    </button>
-                                    <x-app-modal-create 
-                                        modalId="create_cita_modal_{{ $item->id }}" 
-                                        title="Crear cita" 
-                                        formAction="{{ route('Cita.store', $item->id ) }}"
-                                        :form="view('cita.cita-form', ['paciente' => $item, 'servisio' => $servisio, 'doctor' => $doctor])->render()" />
-                                </div>
-                                
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
-            </x-slot>
-            <x-slot name="tab_1">
-                muu bien
             </x-slot>
 
         </x-app-table>
