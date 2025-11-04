@@ -47,6 +47,7 @@ class AuthController extends Controller
 
     public function dashboard()
     {
+        $user = Auth::user();
         $hoy = Carbon::today();
         $mesActual = Carbon::now()->month;
         $anioActual = Carbon::now()->year;
@@ -95,6 +96,7 @@ class AuthController extends Controller
             'citasPendientesHoy',
             'citasCompletasHoy',
             'fechaHoy',
+            'user',
         ));
     }
 }

@@ -32,6 +32,7 @@
                         </div>
                         <ul tabindex="0"
                             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-55 p-2 shadow">
+                            @if (Auth::user()->rol === 'admin')
                             <li>
                                 <h2 class="menu-title">Operaciones</h2>
                                 <ul>
@@ -52,7 +53,35 @@
                                     <li><a href="{{ route('Factura.show') }}" class="text text-sm sm:text-xl"><i
                                                 class="fa-solid fa-briefcase-blank"></i> Administración</a></li>
                                 </ul>
+                            </li>                                
+                            @elseif(Auth::user()->rol === 'recepcionista')
+                            <li>
+                                <h2 class="menu-title">Operaciones</h2>
+                                <ul>
+                                    <li><a href="{{ route('Paciente.show') }}" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-clipboard-medical"></i> Pacientes</a></li>
+                                    <li><a href="{{ route('Cita.show') }}" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-calendar-days"></i> Visitas</a></li>
+                                </ul>
                             </li>
+
+                            <li>
+                                <h2 class="menu-title">Administración</h2>
+                                <ul>
+                                    <li><a href="{{ route('Factura.show') }}" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-briefcase-blank"></i> Administración</a></li>
+                                </ul>
+                            </li>
+                            @elseif(Auth::user()->rol === 'medico')
+                            <li>
+                                <h2 class="menu-title">Operaciones</h2>
+                                <ul>
+                                    <li><a href="{{ route('Cita.show') }}" class="text text-sm sm:text-xl"><i
+                                                class="fa-solid fa-calendar-days"></i> Visitas</a></li>
+                                </ul>
+                            </li>
+                            @endif
+                            
                         </ul>
                     </div>
                     <div class="text-white">
